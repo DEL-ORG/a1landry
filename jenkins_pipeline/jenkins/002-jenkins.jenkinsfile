@@ -1,0 +1,120 @@
+pipeline {
+    agent any
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '7'))
+        // skipDefaultCheckout(true)
+        disableConcurrentBuilds()
+        timeout (time: 10, unit: 'MINUTES')
+        timestamps()
+    }
+
+    environment {
+        DB_USERNAME="admin"
+        DB_PASSWORD="put-your-passwor-here"
+    }
+
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: 'dev', description: '')
+    }
+
+    stages {
+        stage ('Checkout') {
+            steps {
+                sh """
+                   echo "Cloning the ripo please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('Building') {
+            steps {
+                sh """
+                   echo "Building the code please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('Scanning') {
+            steps {
+                sh """
+                   echo "Scanning the code please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('Packaging') {
+            steps {
+                sh """
+                   echo "Packaging the code please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('Building the image') {
+            steps {
+                sh """
+                   echo "Building the image please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('Pushing into Dockerhub') {
+            steps {
+                sh """
+                   echo "Pushing image into Dockerhub please wait ............"
+                   sleep5
+                """
+                }
+                
+            }
+        stage ('Deploying to Swarm') {
+            steps {
+                sh """
+                   echo "Deploying to Swarm please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('Clean up') {
+            steps {
+                sh """
+                   echo "Clean up please wait ............"
+                   sleep 5
+                """
+                }
+                
+            }
+        stage ('List contents') {
+            steps {
+                sh """
+                   echo "List contents please wait ............"
+                   ls -l
+                   pwd
+                   
+                """
+                }
+                
+            }
+        }
+
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+            // You can add more actions for success here
+        }
+        failure {
+            echo 'Pipeline failed!'
+            // You can add more actions for failure here
+        }
+    }
+
+    }
+
+
