@@ -97,7 +97,9 @@ pipeline {
                    echo "List contents please wait ............"
                    ls -l
                    pwd
+                   cd jenkins_pipeline
                    cd scripts
+                   cat jenkins-master.sh  
                 """
                 }
                 
