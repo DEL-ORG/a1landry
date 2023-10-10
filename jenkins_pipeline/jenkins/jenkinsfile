@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    options {
+    }
+    envitonment {
+
+    }
+    parameters {
+
+    }
+
+    stages{
+        stage ('checkout') {
+            steps {
+                sh """
+                
+                """
+            }
+        }
+    }
+}

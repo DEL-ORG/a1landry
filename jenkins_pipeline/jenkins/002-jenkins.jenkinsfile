@@ -68,7 +68,7 @@ pipeline {
             steps {
                 sh """
                    echo "Pushing image into Dockerhub please wait ............"
-                   sleep5
+                   sleep 5
                 """
                 }
                 
@@ -97,7 +97,7 @@ pipeline {
                    echo "List contents please wait ............"
                    ls -l
                    pwd
-                   
+                   cd scripts
                 """
                 }
                 
