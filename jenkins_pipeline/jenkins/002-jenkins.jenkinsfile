@@ -98,6 +98,7 @@ pipeline {
                    ls -l
                    pwd
                    umane -r
+                   lsblk
                    cd jenkins_pipeline
                    cd scripts
                    cat jenkins-master.sh  
