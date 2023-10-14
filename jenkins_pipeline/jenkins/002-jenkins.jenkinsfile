@@ -1,7 +1,8 @@
 pipeline {
     agent any
     triggers {
-        webhook('GitHub') // Specify the type of webhook, e.g., 'GitHub'.
+        // Configure the webhook trigger for GitHub
+        githubPush()
     }
 
     options {
