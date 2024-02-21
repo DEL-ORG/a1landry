@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh """
                    echo "Cloning the ripo please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh """
                    echo "Building the code please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 sh """
                    echo "Scanning the code please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 sh """
                    echo "Packaging the code please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 sh """
                    echo "Building the image please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -72,7 +72,7 @@ pipeline {
             steps {
                 sh """
                    echo "Pushing image into Dockerhub please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -81,7 +81,7 @@ pipeline {
             steps {
                 sh """
                    echo "Deploying to Swarm please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
@@ -90,7 +90,7 @@ pipeline {
             steps {
                 sh """
                    echo "Clean up please wait ............"
-                   sleep 5
+                   sleep 1
                 """
                 }
                 
