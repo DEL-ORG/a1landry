@@ -1,7 +1,7 @@
-resource "aws_security_group" "ec2_sg" {
-  name        = "ec2_sg"
-  description = "Allow inbound traffic"
-  vpc_id      = var.vpc_id
+resource "aws_security_group" "demo_sg" {
+  vpc_id      = aws_vpc.demo_vpc.id
+  name        = "demo_security_group"
+  description = "Allow SSH and HTTP access"
 
   ingress {
     description = "SSH"
@@ -11,7 +11,7 @@ resource "aws_security_group" "ec2_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-   ingress {
+  ingress {
     description = "HTTP"
     from_port   = 80
     to_port     = 80
@@ -25,4 +25,9 @@ resource "aws_security_group" "ec2_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = merge(
+    var.tags,
+    { Name = "demo_Security_Group" }
+  )
 }

@@ -1,12 +1,12 @@
-resource "aws_instance" "demo_ec2" {
-  ami           = data.aws_ami.ubuntu.id  
-  instance_type = var.instance_type
-  key_name      = var.key_name
-  subnet_id     = aws_subnet.public_subnet.id
-  vpc_security_group_ids = [aws_security_group.demo_sg.id]
+resource "aws_instance" "ec2_demo" {
+  ami             = var.ami
+  instance_type   = var.instance_type
+  key_name        = var.key_name
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  subnet_id       = var.subnet_id  # Replace with your subnet ID if needed
+  associate_public_ip_address = true
 
-  tags = merge(
-    var.tags,
-    { Name = "demo_ec2" }
-  )
+  tags = {
+    Name = "ec2_demo"
+  }
 }
