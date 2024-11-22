@@ -1,1 +1,1 @@
-Terraform code to create an ec2 instance modules in AWS
+Terraform code to create modules

@@ -1,7 +1,9 @@
-resource "aws_security_group" "demo_sg" {
-  vpc_id      = aws_vpc.demo_vpc.id
-  name        = "demo_security_group"
-  description = "Allow SSH and HTTP access"
+resource "aws_security_group" "ec2_sg" {
+    tags = merge(var.tags, {
+      Name = format("%s-%s-${var.resource_type}", var.tags["environment"], var.tags["project"])
+  })
+  description = "Allow inbound traffic"
+  vpc_id      = data.aws_vpc.vpc.id
 
   ingress {
     description = "SSH"
@@ -19,15 +21,18 @@ resource "aws_security_group" "demo_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "HTTP"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags = merge(
-    var.tags,
-    { Name = "demo_Security_Group" }
-  )
 }

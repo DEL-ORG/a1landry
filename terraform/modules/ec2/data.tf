@@ -1,20 +1,21 @@
-data "aws_ami" "ubuntu" {
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "tag:team" # Replace "Name" with your specific tag key
+    values = ["wdp"]    # Replace "MyVPC" with your tag value
+  }
+}
+
+data "aws_subnet" "subnet_public" {
+  filter {
+    name   = "tag:Name"          # Replace "Name" with your specific tag key
+    values = ["subnet_public01"] # Replace with your tag value
+  }
+}
+
+data "aws_ami" "jenkins-master-ami" {
   most_recent = true
-
   filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    name   = "tag:Name"          
+    values = ["jenkins"] 
   }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  owners = ["099720109477"]  
 }
