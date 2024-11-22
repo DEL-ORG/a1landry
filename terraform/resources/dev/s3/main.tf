@@ -1,5 +1,6 @@
 provider "aws" {
   region = local.aws_region
+  profile = local.profile
 }
 
 ## Terraform block
@@ -15,6 +16,7 @@ terraform {
 
 locals {
   aws_region = "us-east-1"
+  profile    = "default"
   common_tags = {
     "id"             = "2411"
     "owner"          = "EK TECH SOFTWARE SOLUTION"
@@ -28,6 +30,7 @@ locals {
 module "s3_backend" {
   source      = "../../../modules/s3"
   aws_region  = local.aws_region
+  profile = local.profile
   common_tags = local.common_tags
 
 }
