@@ -12,20 +12,17 @@ terraform {
 provider "aws" {
   alias   = "source"
   region  = local.aws_region_main
-  profile = local.profile
 }
 
 provider "aws" {
   alias   = "backup"
   region  = local.aws_region_backup
-  profile = local.profile
 }
 
 
 locals {
   aws_region_main   = "us-east-1"
   aws_region_backup = "us-east-2"
-  profile           = "default"
   force_destroy     = true
   common_tags = {
     "id"             = "2411"
@@ -43,5 +40,4 @@ module "s3-backend" {
   aws_region_backup = local.aws_region_backup
   force_destroy     = local.force_destroy
   common_tags       = local.common_tags
-  profile           = local.profile
 }

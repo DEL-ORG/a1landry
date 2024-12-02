@@ -1,6 +1,5 @@
 provider "aws" {
   region  = local.aws_region
-  profile = local.profile
 }
 
 ## Terraform block
@@ -16,7 +15,6 @@ terraform {
 
 locals {
   aws_region = "us-east-1"
-  profile    = "default"
 
 
   common_tags = {
@@ -43,7 +41,6 @@ locals {
 module "vpc" {
   source            = "../../../modules/vpc"
   aws_region        = local.aws_region
-  profile           = local.profile
   common_tags       = local.common_tags
   cidr              = local.cidr
   availability_zone = local.availability_zone

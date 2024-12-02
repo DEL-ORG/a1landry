@@ -2,11 +2,6 @@ variable "aws_region" {
   type = string
 }
 
-variable "profile" {
-  type = string
-
-}
-
 variable "common_tags" {
   description = "Tags to apply to the resources"
   type        = map(string)
