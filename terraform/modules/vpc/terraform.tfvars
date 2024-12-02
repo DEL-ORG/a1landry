@@ -19,4 +19,3 @@ availability_zone = [
 
 num_nat_gw = 1
 
-profile = "default"
