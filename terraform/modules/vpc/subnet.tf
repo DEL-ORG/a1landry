@@ -15,7 +15,7 @@ resource "aws_subnet" "a1landry_public_subnet" {
   cidr_block = cidrsubnet(var.cidr, 6, count.index + 1)
 
   tags = merge(var.common_tags, {
-    Name = format("%s-a1landry_public_subnet-${count.index}", var.commom_tags["environment"])
+    Name = format("%s-a1landry_public_subnet-${count.index}", var.common_tags["environment"])
     
     }
   )
